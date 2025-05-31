@@ -466,10 +466,10 @@ class UI extends LitElement {
 
   _fullscreenToggle() {
     return html`
-      <button id="fullscreenSwitch" @click=${this.toggleFullscreen}>
+      <!-- <button id="fullscreenSwitch" @click=${this.toggleFullscreen}>
         <ncrs-icon title="Switch to Fullscreen. [EXPERIMENTAL]" icon="fullscreen" color="white" class="minimized"></ncrs-icon>
         <ncrs-icon title="Minimize." icon="minimize" color="white" class="fullscreen"></ncrs-icon>
-      </button>
+      </button> -->
     `
   }
 
