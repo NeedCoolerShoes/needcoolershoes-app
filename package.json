@@ -13,10 +13,10 @@
     "tauri": "tauri",
     "tauri-dev": "tauri dev",
     "tauri-build": "NO_STRIP=true tauri build"
-
   },
   "dependencies": {
     "@simonwep/pickr": "^1.9.1",
+    "@tauri-apps/plugin-window-state": "^2.2.2",
     "ajv": "^8.17.1",
     "color": "^4.2.3",
     "idb-keyval": "^6.2.1",
