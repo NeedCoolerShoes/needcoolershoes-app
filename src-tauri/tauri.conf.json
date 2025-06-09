@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "NeedCoolerShoes Editor",
-        "width": 1920,
-        "height": 1080,
+        "width": 640,
+        "height": 480,
         "resizable": true,
         "fullscreen": false
       }
