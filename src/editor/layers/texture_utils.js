@@ -212,4 +212,30 @@ function getWatermarkData(canvas) {
   }
 }
 
-export {remapUV, getMirroredCoords, swapBodyOverlay, swapFrontBack, getPartFromCoords, getUV, getUVFromCoords, getWatermarkData, clearLayer}
+function mergeLayers(inputCanvas, sourceLayer, destLayer, variant) {
+  const canvas = new OffscreenCanvas(IMAGE_WIDTH, IMAGE_HEIGHT);
+  const ctx = canvas.getContext("2d");
+
+  function swapUV(source, destination) {
+    Object.keys(source).forEach(key => {
+      remapUV(inputCanvas, ctx, source[key], destination[key])
+    });
+  }
+
+  MODEL_PARTS.forEach(part => {
+    const source = getUVMap(variant, part + "_" + sourceLayer);
+    const dest = getUVMap(variant, part + "_" + destLayer);
+
+    Object.keys(dest).forEach(key => {
+      ctx.drawImage(inputCanvas, ...dest[key], ...dest[key]);
+    });
+
+    Object.keys(source).forEach(key => {
+      ctx.drawImage(inputCanvas, ...source[key], ...dest[key]);
+    });
+  })
+
+  return canvas;
+}
+
+export {remapUV, getMirroredCoords, swapBodyOverlay, swapFrontBack, getPartFromCoords, getUV, getUVFromCoords, getWatermarkData, clearLayer, mergeLayers}

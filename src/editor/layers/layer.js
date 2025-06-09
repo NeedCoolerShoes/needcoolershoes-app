@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { IMAGE_HEIGHT, IMAGE_LEGACY_HEIGHT, IMAGE_WIDTH, IMAGE_THUMBNAIL_WIDTH, IMAGE_THUMBNAIL_HEIGHT } from "../../constants";
 import { imageToPreview } from "./layer_preview";
 import Compositor from "./compositor";
-import { clearLayer, getWatermarkData, swapBodyOverlay, swapFrontBack } from "./texture_utils";
+import { clearLayer, getWatermarkData, mergeLayers, swapBodyOverlay, swapFrontBack } from "./texture_utils";
 import convertLegacySkin from "./legacy_skin";
 import thumbnailImport from "./thumbnail_import";
 
@@ -103,6 +103,10 @@ class Layer extends EventTarget {
 
   clearOverlay(variant) {
     return clearLayer(this.getBaseCanvas(), variant, "overlay");
+  }
+
+  flattenOverlay(variant) {
+    return mergeLayers(this.getBaseCanvas(), "overlay", "base", variant);
   }
 
   readAttributionData() {

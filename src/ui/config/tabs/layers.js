@@ -253,6 +253,7 @@ class LayersTab extends Tab {
         <hr>
         <ncrs-button @click=${this.clearLayerBase} title="Erases the base of the skin on the selected layer.">Erase Skin Base</ncrs-button>
         <ncrs-button @click=${this.clearLayerOverlay} title="Erases the overlay of the skin on the selected layer.">Erase Skin Overlay</ncrs-button>
+        <ncrs-button @click=${this.flattenLayerOverlay} title="Erases the overlay of the skin on the selected layer.">Flatten Overlay in to Base</ncrs-button>
       </div>
     `;
   }
@@ -294,6 +295,17 @@ class LayersTab extends Tab {
     const layers = this.editor.layers;
     const layer = this._getLayer();
     const canvas = layer.clearOverlay(this.editor.config.get("variant", "classic"));
+    const texture = new THREE.Texture(canvas, IMAGE_WIDTH, IMAGE_HEIGHT);
+
+    this.editor.history.add(
+      new UpdateLayerTextureEntry(layers, layer, texture)
+    );
+  }
+
+  flattenLayerOverlay() {
+    const layers = this.editor.layers;
+    const layer = this._getLayer();
+    const canvas = layer.flattenOverlay(this.editor.config.get("variant", "classic"));
     const texture = new THREE.Texture(canvas, IMAGE_WIDTH, IMAGE_HEIGHT);
 
     this.editor.history.add(
