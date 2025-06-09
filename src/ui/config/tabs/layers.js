@@ -251,9 +251,9 @@ class LayersTab extends Tab {
         <ncrs-button @click=${this.swapBodyOverlay} title="Swap body of the skin with the overlay.">Swap Body / Overlay</ncrs-button>
         <ncrs-button @click=${this.swapFrontBack} title="Flip skin front and back.">Flip Front / Back</ncrs-button>
         <hr>
+        <ncrs-button @click=${this.flattenLayerOverlay} title="Flatten the overlay in to the base of the skin on the selected layer.">Flatten Overlay in to Base</ncrs-button>
         <ncrs-button @click=${this.clearLayerBase} title="Erases the base of the skin on the selected layer.">Erase Skin Base</ncrs-button>
         <ncrs-button @click=${this.clearLayerOverlay} title="Erases the overlay of the skin on the selected layer.">Erase Skin Overlay</ncrs-button>
-        <ncrs-button @click=${this.flattenLayerOverlay} title="Erases the overlay of the skin on the selected layer.">Flatten Overlay in to Base</ncrs-button>
       </div>
     `;
   }
